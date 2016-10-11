@@ -25,10 +25,13 @@ html(lang='en')
     script(src='//webpack.calendar.docker/static/bundle.js')
     script.
       $(document).ready(function() {
-        $.get('/api/events/#{user.profile.name}', function(events){
+        $.get('/api/events/#{cal_user.profile.name}', function(events){
+          var cal_user = events.user
           var cal = $('#calendar')
+
           cal.fullCalendar({
             dayClick: function (date, jsEvent, view) {
+              if (cal_user._id == '#{user._id}')
               swal({
                 title: "An input!",
                 text: "Write something interesting:",
@@ -66,7 +69,7 @@ html(lang='en')
             navLinks: true, // can click day/week names to navigate views
             editable: true,
             eventLimit: true, // allow "more" link when too many events
-            events: events
+            events: events.events
           });
         })
 

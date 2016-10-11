@@ -26,7 +26,7 @@ router.get('/:username', co(function*(req,res) {
   let users = yield User.find()
   let user = yield User.findOne({'profile.name': req.params.username})
 
-  res.render('calendar', {users, user})
+  res.render('calendar', {users, cal_user: user})
 }))
 
 router.post('/charge', function (req, res) {

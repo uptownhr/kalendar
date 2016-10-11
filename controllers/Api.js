@@ -7,7 +7,7 @@ const async = require('async'),
 router.get('/events/:username', co(function *(req, res) {
   let user = yield User.findOne({'profile.name': req.params.username})
   let events = yield Event.find({user: user._id})
-  res.send({events})
+  res.send({events, user})
 }))
 
 router.post('/event', function (req,res){
