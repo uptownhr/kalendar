@@ -1,8 +1,9 @@
 const router = require('express').Router()
 const async = require('async'),
   config = require('../config'),
-  Project = require('../models/Project'),
-  Product = require('../models/Product');
+  {Project, User, Event}= require('../models'),
+  Product = require('../models/Product'),
+  co = require('bluebird').coroutine;
 
 const stripe = require('stripe')(config.payment.stripe.secret_key);
 router.get('/', function (req, res) {
@@ -19,8 +20,14 @@ router.get('/', function (req, res) {
     result.stripe = config.payment.stripe.public_key;
     res.render('index', result);
   });
-
 })
+
+router.get('/:username', co(function*(req,res) {
+  let users = yield User.find()
+  let user = yield User.findOne({'profile.name': req.params.username})
+
+  res.render('calendar', {users, user})
+}))
 
 router.post('/charge', function (req, res) {
     var stripeToken = req.body.stripeToken;

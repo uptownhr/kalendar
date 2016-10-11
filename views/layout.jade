@@ -3,8 +3,12 @@ html(lang='en')
   head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Merriweather:300,400|Oleo+Script|Lobster+Two|Berkshire+Swash" rel="stylesheet")
-    title Simplehedron
+    link(href='https://fullcalendar.io/js/fullcalendar-3.0.1/fullcalendar.css' rel='stylesheet')
+    link(href='https://fullcalendar.io/js/fullcalendar-3.0.1/fullcalendar.print.css' rel='stylesheet' media='print')
+    script(src='https://fullcalendar.io/js/fullcalendar-3.0.1/lib/moment.min.js')
+    script(src='https://fullcalendar.io/js/fullcalendar-3.0.1/lib/jquery.min.js')
+    script(src='https://fullcalendar.io/js/fullcalendar-3.0.1/fullcalendar.min.js')
+    title Shalendar
   body
     nav.nav
       div.nav-toggle
@@ -14,14 +18,13 @@ html(lang='en')
       div.nav-menu.nav-left
         a.nav-item Home
       div.nav-center
-        a.nav-item.is-brand(href="/") SimpleHedron
+        a.nav-item.is-brand(href="/") Shalendar
       div.nav-menu.nav-right
         a.nav-item
           .check-prices.button.is-primary Check Prices
 
     block content
 
-    footer.section testing
-    .section testing again
-    script(src="http://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous")
-    script(src="//webpack.simple.docker/static/bundle.js")
+    script(src='//webpack.calendar.docker/static/bundle.js')
+
+    block scripts

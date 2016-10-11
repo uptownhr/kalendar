@@ -9,9 +9,9 @@ app:
   - redis
   - mongo
   environment:
-  - MONGODB=mongodb://mongo:27017/hackathon
+  - MONGODB=mongodb://mongo:27017/calendar
   - REDIS=redis://redis:6379
-  - VIRTUAL_HOST=simple.docker
+  - VIRTUAL_HOST=calendar.docker
   - NODE_ENV=development
 mongo:
   image: mongo
@@ -21,7 +21,7 @@ redis:
 webpack:
  build: ./webpack
  environment:
-  - VIRTUAL_HOST=webpack.simple.docker
+  - VIRTUAL_HOST=webpack.calendar.docker
   - ENV=dev
  volumes:
  - ./webpack:/webpack

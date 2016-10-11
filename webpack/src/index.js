@@ -302,14 +302,17 @@ $(window).on('scroll', function(){
     $('.is-brand').removeClass('has-scrolled')
   }
 
-  var prices_top = $('.fold .check-prices').offset().top
-  console.log(top, prices_top)
+  var check_prices = $('.fold .check-prices')
 
-  if(top > prices_top){
-    $('.nav .check-prices').addClass('scrolled')
-  }else{
-    $('.nav .check-prices').removeClass('scrolled')
+  if (check_prices.length > 0) {
+    var top = check_prices.offset().top
+    if(top > prices_top){
+      $('.nav .check-prices').addClass('scrolled')
+    }else{
+      $('.nav .check-prices').removeClass('scrolled')
+    }
   }
+
 })
 
 window.Vue = Vue;
